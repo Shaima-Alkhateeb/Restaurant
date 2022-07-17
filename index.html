@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <!-- <link rel="icon" type="image/x-icon" href="./assets/favicon.png"> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+    <header>
+        <!-- <img src="./assets/favicon.png" alt="Check logo" width="100" height="100"> -->
+        <h1>Restaurant</h1>
+        <div class="topnav">
+            <a href="https://www.notion.so/">Home</a>
+            <a href="https://www.picmonkey.com/help">Feedback</a>
+            <a href="./about.html">About</a>
+          </div>
+    </header>
+
+    <main>
+        <form id ="formID">
+            <br>
+            <br>
+            <label for="foodname">Food Name:</label>
+            <input type="text" id="foodname" name="foodname">
+            <br>
+            <br>
+          <label for="food">Choose a food:</label>
+           <select name="food" id="food">
+            <option value="Fruit and vegetables">Fruit and vegetables</option>
+            <option value="Starchy food">Starchy food</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Protein">Protein</option>
+            <option value="Fat">Fat</option>
+           </select>
+           <br>
+           <br>
+          <label for="price">Price:</label>
+          <input type="price" id="price" name="price">
+          <br>
+          <br>
+          <input type="submit" value="Submit">
+          <br/>
+          <br/>
+        </form>
+        <div id="menu"></div>
+
+        <table class="classTable">
+            <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Price</th>
+                </tr>
+            </thead>
+                <tbody id="tBodyID">
+
+                </tbody>>
+        </table>
+
+    </main>
+
+    <footer>
+     
+        <div class="socialMediaLink">
+            <a href="https://www.facebook.com/">facebook</a>
+            <a href="https://twitter.com/">twitter</a>
+            <a href="https://www.instagram.com/">instagram</a>
+        </div>
+        <script src="app.js"></script>
+        <p>© 2022 Restaurant</p>
+
+    </footer>
+
+    
+</body>
+
+</html>
