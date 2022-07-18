@@ -3,11 +3,12 @@
 const allFoods = [];
 const parentEl = document.getElementById("menu");
 
+// let randomFoodID = 10000;
 function Food( foodName, type, price){
     this.foodName = foodName;
     this.type = type;
     this.price = price;
-    this.foodId = this.randomFoodID();
+    this.foodId =  this.randomFoodID();   // randomFoodID++;
     
     allFoods.push(this);
 }
@@ -15,6 +16,7 @@ function Food( foodName, type, price){
 Food.prototype.randomFoodID = function () {
     return(Math.floor(1000 + Math.random() * 9000));
 }
+
 
 Food.prototype.render = function () {
     
@@ -26,7 +28,7 @@ Food.prototype.render = function () {
     let tablecontent3 = document.createElement("td");
     let tablecontent4 = document.createElement("td");
 
-    tablecontent1.textContent = this.foodID;
+    tablecontent1.textContent = this.foodId;
     tablecontent2.textContent = this.foodName;
     tablecontent3.textContent = this.type;
     tablecontent4.textContent = this.price;
@@ -44,9 +46,10 @@ formFood.addEventListener('submit',handleSubmit);
 
 function handleSubmit(event) {
     event.preventDefault();
+    // let food = document.getElementById("formID");
     
-    let foodName = event.target.foodName.value;
-    let type = event.target.type.value;
+    let foodName = event.target.foodname.value;
+    let type = event.target.food.value;
     let price = event.target.price.value;
 
     const newFood = new Food( foodName, type, price);
@@ -55,6 +58,27 @@ function handleSubmit(event) {
     newFood.render();
     saveData();
 }
+
+function saveData() {
+    let strifyedData = JSON.stringify(allFoods);
+    localStorage.setItem("Foods", strifyedData);
+}
+
+function getData() {
+    
+    let retrivedData = localStorage.getItem("Foods");
+    let parsedData = JSON.parse(retrivedData)
+    console.log(parsedData);
+    console.log(typeof parsedData); 
+    
+    if (parsedData != null) {
+        for (let i = 0; i < parsedData.length; i++) {
+
+            new Food(parsedData[i].foodName, parsedData[i].type, parsedData[i].price, parsedData[i].foodId);
+        }
+    }
+}
+
 
 function saveData() {
     let strifyedData = JSON.stringify(allFoods);
