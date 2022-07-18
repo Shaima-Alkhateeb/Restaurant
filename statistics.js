@@ -65,7 +65,6 @@ function saveData() {
     localStorage.setItem("foodKey", strifyedData);
 }
 
-saveData();
 
 // 
 function getData() {
@@ -89,3 +88,93 @@ function getData() {
 }
 
 getData();
+
+
+// Line chart JS
+const chartNames = [];
+const chartPrices = [];
+const chartTypes = [];
+for (let i=0; i<allFoods[i]; i++) {
+    chartNames.push(allFoods[i].foodName);
+    chartPrices.push(allFoods[i].price);
+    chartTypes.push(allFoods[i].type)
+
+}
+
+  const data = {
+    labels: chartNames,
+    datasets: [{
+      label: 'Price',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: chartPrices,
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+  // Bar chart JS
+  const numberOfEachTypeOfFood = [];
+
+  fruitAndVegetablesCounting = 0;
+  starchyFoodCounting = 0;
+  dairyCounting = 0;
+  proteinCounting = 0;
+  fatCounting = 0;
+
+switch(allFoods[i].type) {
+    case "Fruit and vegetables":
+        fruitAndVegetablesCounting++;
+      break;
+
+    case "Starchy food":
+        starchyFoodCounting++;
+      break;
+
+    case "Dairy":
+        dairyCounting++;
+      break;
+
+    case "Protein":
+        proteinCounting++;
+      break;  
+
+    case "Fat":
+        fatCounting++;
+      break;
+     
+    default:
+      // code block
+  }
+
+  
+
+  const dataBar = {
+    labels: chartTypes,
+    datasets: [{
+      label: 'Type',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: chartPrices,
+    }]
+  };
+
+  const configBar = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
+
+  const myBarChart = new Chart(
+    document.getElementById('myChart'),
+    configBar
+  );
