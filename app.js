@@ -44,6 +44,7 @@ Food.prototype.render = function () {
 let formFood = document.getElementById("formID");
 formFood.addEventListener('submit',handleSubmit);
 
+
 function handleSubmit(event) {
     event.preventDefault();
     // let food = document.getElementById("formID");
@@ -59,48 +60,31 @@ function handleSubmit(event) {
     saveData();
 }
 
+
+// save my data --> local storage
 function saveData() {
     let strifyedData = JSON.stringify(allFoods);
-    localStorage.setItem("Foods", strifyedData);
+    localStorage.setItem("foodKey", strifyedData);
 }
 
+// 
 function getData() {
     
-    let retrivedData = localStorage.getItem("Foods");
+    let retrivedData = localStorage.getItem("foodKey");
     let parsedData = JSON.parse(retrivedData)
-    console.log(parsedData);
-    console.log(typeof parsedData); 
     
+    // re-istantioation
     if (parsedData != null) {
         for (let i = 0; i < parsedData.length; i++) {
 
             new Food(parsedData[i].foodName, parsedData[i].type, parsedData[i].price, parsedData[i].foodId);
         }
     }
-}
-
-
-function saveData() {
-    let strifyedData = JSON.stringify(allFoods);
-    localStorage.setItem("Foods", strifyedData);
-}
-
-function getData() {
-    
-    let retrivedData = localStorage.getItem("Foods");
-    let parsedData = JSON.parse(retrivedData)
-    console.log(parsedData);
-    console.log(typeof parsedData); 
-    
-    if (parsedData != null) {
-        for (let i = 0; i < parsedData.length; i++) {
-
-            new Food(parsedData[i].foodName, parsedData[i].type, parsedData[i].price, parsedData[i].foodId);
-        }
+    for (let i = 0; i < allFoods.length; i++){
+        allFoods[i].render();
+        console.log(allFoods);
     }
 }
 
+getData();
 
-for (let i = 0; i < allFoods.length; i++){
-    allFoods[i].render();
-}
